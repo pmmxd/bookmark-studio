@@ -29,6 +29,9 @@
 - 友情链接文件夹与隐私文件夹支持搜索选择，并按文件夹 ID 自动适配移动和改名。
 - 支持 JSON 完整性校验备份、Netscape HTML 导入导出和浏览器书签恢复。
 - 支持对比搜索、悬浮球、二维码、图标缓存和 AI 快讯导航。
+<img width="743" height="805" alt="image" src="https://github.com/user-attachments/assets/bffc0504-4fdb-49a6-a8f6-c893720fcbd4" />
+<img width="3232" height="1908" alt="image" src="https://github.com/user-attachments/assets/ea521705-45ac-4d71-b77a-8293e4d6b63a" />
+<img width="3196" height="1789" alt="image" src="https://github.com/user-attachments/assets/98aeb33c-adac-4245-b7ab-57e9ae37716e" />
 
 ## 隐私
 
