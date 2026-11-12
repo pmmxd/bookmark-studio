@@ -1,0 +1,46 @@
+{
+  "name": "bookmark-studio",
+  "private": true,
+  "version": "0.4.3",
+  "type": "module",
+  "description": "Bookmark Studio - 书签整理、新标签页看板、本地 AI 与多浏览器扩展（Chrome / Edge，MV3）",
+  "scripts": {
+    "dev": "vite",
+    "icons": "node scripts/icons.mjs",
+    "build": "node scripts/icons.mjs && tsc -b && vite build && node scripts/postbuild.mjs",
+    "preview": "vite preview",
+    "zip": "npm run build && node scripts/zip.mjs",
+    "typecheck": "tsc -b --noEmit",
+    "test:core": "node --experimental-strip-types scripts/test-bookmark-core.mjs"
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-dropdown-menu": "^2.1.2",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-switch": "^1.1.1",
+    "@radix-ui/react-tabs": "^1.1.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.454.0",
+    "qrcode": "^1.5.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.5.4"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.280",
+    "@types/node": "^22.9.0",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "archiver": "^7.0.1",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^3.4.14",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  }
+}

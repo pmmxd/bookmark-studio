@@ -1,0 +1,20 @@
+node_modules
+dist/
+dist.zip
+.vite
+.codegraph
+*.tsbuildinfo
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example
+
+# IDE / editor
+.cursor/
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+# 指定文件
+channel-sync/ai-channels.json

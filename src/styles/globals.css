@@ -1,0 +1,414 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 234 57% 60%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 234 57% 60%;
+    --radius: 0.75rem;
+
+    /* 字体家族（设计主题可覆盖） */
+    --font-sans: "Inter", "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+
+    --claude-canvas: 40 48% 96%;
+    --claude-rule: 30 8% 85%;
+    --claude-accent: 15 54% 58%;
+    --claude-ink-muted: 28 10% 38%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 47% 10%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 47% 10%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 234 62% 64%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 40%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 234 62% 64%;
+
+    --claude-canvas: 30 17% 9%;
+    --claude-rule: 30 8% 22%;
+    --claude-accent: 15 60% 62%;
+    --claude-ink-muted: 35 10% 65%;
+  }
+
+  /* 主题色预设（与 Settings.accentPreset 对应） */
+  [data-accent="linear"] {
+    --primary: 234 57% 60%;
+    --ring: 234 57% 60%;
+  }
+  .dark[data-accent="linear"] {
+    --primary: 234 62% 64%;
+    --ring: 234 62% 64%;
+  }
+  [data-accent="blue"] {
+    --primary: 214 100% 59%;
+    --ring: 214 100% 59%;
+  }
+  .dark[data-accent="blue"] {
+    --primary: 213 94% 68%;
+    --ring: 213 94% 68%;
+  }
+  [data-accent="emerald"] {
+    --primary: 160 84% 39%;
+    --ring: 160 84% 39%;
+  }
+  .dark[data-accent="emerald"] {
+    --primary: 158 64% 52%;
+    --ring: 158 64% 52%;
+  }
+  [data-accent="rose"] {
+    --primary: 346 77% 50%;
+    --ring: 346 77% 50%;
+  }
+  .dark[data-accent="rose"] {
+    --primary: 350 89% 60%;
+    --ring: 350 89% 60%;
+  }
+  [data-accent="amber"] {
+    --primary: 32 95% 44%;
+    --ring: 32 95% 44%;
+  }
+  .dark[data-accent="amber"] {
+    --primary: 43 96% 56%;
+    --ring: 43 96% 56%;
+  }
+  [data-accent="violet"] {
+    --primary: 262 83% 58%;
+    --ring: 262 83% 58%;
+  }
+  .dark[data-accent="violet"] {
+    --primary: 263 70% 60%;
+    --ring: 263 70% 60%;
+  }
+  [data-accent="cyan"] {
+    --primary: 188 85% 40%;
+    --ring: 188 85% 40%;
+  }
+  .dark[data-accent="cyan"] {
+    --primary: 188 86% 53%;
+    --ring: 188 86% 53%;
+  }
+  [data-accent="orange"] {
+    --primary: 24 95% 50%;
+    --ring: 24 95% 50%;
+  }
+  .dark[data-accent="orange"] {
+    --primary: 25 95% 58%;
+    --ring: 25 95% 58%;
+  }
+  [data-accent="indigo"] {
+    --primary: 221.2 83.2% 53.3%;
+    --ring: 221.2 83.2% 53.3%;
+  }
+  .dark[data-accent="indigo"] {
+    --primary: 217.2 91.2% 59.8%;
+    --ring: 224.3 76.3% 48%;
+  }
+
+  /* ============================================================ */
+  /* 设计主题预设（theme preset）                                  */
+  /* 放在 data-accent 之后以相同优先级压制 accent 的 primary 值。 */
+  /* 选择 default 时不覆盖任何东西，accentPreset 继续生效。       */
+  /* ============================================================ */
+
+  /* Claude */
+  [data-theme-preset="claude"] {
+    --background: 40 48% 96%;
+    --foreground: 30 20% 14%;
+    --card: 40 40% 98%;
+    --card-foreground: 30 20% 14%;
+    --popover: 40 40% 98%;
+    --popover-foreground: 30 20% 14%;
+    --primary: 15 54% 58%;
+    --primary-foreground: 40 40% 98%;
+    --secondary: 30 20% 93%;
+    --secondary-foreground: 30 20% 20%;
+    --muted: 30 20% 93%;
+    --muted-foreground: 28 10% 38%;
+    --accent: 30 20% 93%;
+    --accent-foreground: 30 20% 20%;
+    --border: 30 15% 85%;
+    --input: 30 15% 85%;
+    --ring: 15 54% 58%;
+    --radius: 1rem;
+    --font-sans: "Fraunces", "Georgia", "PingFang SC", "Microsoft YaHei", serif;
+  }
+  .dark[data-theme-preset="claude"] {
+    --background: 30 17% 9%;
+    --foreground: 35 12% 92%;
+    --card: 30 14% 12%;
+    --card-foreground: 35 12% 92%;
+    --popover: 30 14% 12%;
+    --popover-foreground: 35 12% 92%;
+    --primary: 15 60% 62%;
+    --primary-foreground: 30 17% 9%;
+    --secondary: 30 10% 18%;
+    --secondary-foreground: 35 12% 92%;
+    --muted: 30 10% 18%;
+    --muted-foreground: 35 10% 65%;
+    --accent: 30 10% 18%;
+    --accent-foreground: 35 12% 92%;
+    --border: 30 8% 22%;
+    --input: 30 8% 22%;
+    --ring: 15 60% 62%;
+  }
+
+  /* Linear */
+  [data-theme-preset="linear"] {
+    --background: 240 20% 98%;
+    --primary: 233 62% 60%;
+    --primary-foreground: 210 40% 98%;
+    --ring: 233 62% 60%;
+    --radius: 0.5rem;
+    --border: 240 16% 90%;
+    --input: 240 16% 90%;
+  }
+  .dark[data-theme-preset="linear"] {
+    --background: 235 20% 9%;
+    --card: 235 18% 11%;
+    --popover: 235 18% 11%;
+    --primary: 233 68% 70%;
+    --primary-foreground: 235 20% 9%;
+    --ring: 233 68% 70%;
+    --border: 235 12% 18%;
+    --input: 235 12% 18%;
+    --secondary: 235 12% 18%;
+    --muted: 235 12% 18%;
+    --accent: 235 12% 18%;
+  }
+
+  /* Apple */
+  [data-theme-preset="apple"] {
+    --background: 220 18% 97%;
+    --foreground: 230 16% 12%;
+    --card: 0 0% 100%;
+    --primary: 213 100% 47%;
+    --primary-foreground: 210 40% 98%;
+    --ring: 213 100% 47%;
+    --radius: 0.875rem;
+    --border: 215 16% 87%;
+    --input: 215 16% 87%;
+    --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  }
+  .dark[data-theme-preset="apple"] {
+    --background: 220 14% 8%;
+    --card: 220 14% 11%;
+    --popover: 220 14% 11%;
+    --primary: 212 100% 62%;
+    --primary-foreground: 220 14% 8%;
+    --ring: 212 100% 62%;
+    --border: 220 10% 18%;
+    --input: 220 10% 18%;
+    --secondary: 220 10% 18%;
+    --muted: 220 10% 18%;
+    --accent: 220 10% 18%;
+  }
+
+  /* Stripe */
+  [data-theme-preset="stripe"] {
+    --background: 228 30% 98%;
+    --foreground: 222 47% 16%;
+    --primary: 247 85% 62%;
+    --primary-foreground: 210 40% 98%;
+    --ring: 247 85% 62%;
+    --radius: 0.625rem;
+    --border: 228 20% 90%;
+    --input: 228 20% 90%;
+    --muted: 228 20% 95%;
+  }
+  .dark[data-theme-preset="stripe"] {
+    --background: 222 40% 10%;
+    --card: 222 36% 13%;
+    --popover: 222 36% 13%;
+    --primary: 248 90% 75%;
+    --primary-foreground: 222 40% 10%;
+    --ring: 248 90% 75%;
+    --border: 222 20% 20%;
+    --input: 222 20% 20%;
+    --secondary: 222 20% 20%;
+    --muted: 222 20% 20%;
+    --accent: 222 20% 20%;
+  }
+
+  /* IBM Carbon */
+  [data-theme-preset="ibm"] {
+    --background: 220 14% 96%;
+    --foreground: 216 25% 12%;
+    --card: 0 0% 100%;
+    --primary: 220 100% 41%;
+    --primary-foreground: 210 40% 98%;
+    --ring: 220 100% 41%;
+    --radius: 0.125rem;
+    --border: 220 13% 84%;
+    --input: 220 13% 84%;
+    --font-sans: "IBM Plex Sans", "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+  }
+  .dark[data-theme-preset="ibm"] {
+    --background: 220 30% 8%;
+    --card: 220 24% 12%;
+    --popover: 220 24% 12%;
+    --primary: 214 100% 68%;
+    --primary-foreground: 220 30% 8%;
+    --ring: 214 100% 68%;
+    --border: 220 12% 20%;
+    --input: 220 12% 20%;
+    --secondary: 220 12% 20%;
+    --muted: 220 12% 20%;
+    --accent: 220 12% 20%;
+  }
+
+  /* Meta */
+  [data-theme-preset="meta"] {
+    --background: 210 20% 98%;
+    --primary: 214 88% 49%;
+    --primary-foreground: 210 40% 98%;
+    --ring: 214 88% 49%;
+    --radius: 1.25rem;
+    --border: 210 16% 90%;
+    --input: 210 16% 90%;
+  }
+  .dark[data-theme-preset="meta"] {
+    --background: 210 20% 10%;
+    --card: 210 18% 13%;
+    --popover: 210 18% 13%;
+    --primary: 214 90% 66%;
+    --primary-foreground: 210 20% 10%;
+    --ring: 214 90% 66%;
+    --border: 210 14% 20%;
+    --input: 210 14% 20%;
+    --secondary: 210 14% 20%;
+    --muted: 210 14% 20%;
+    --accent: 210 14% 20%;
+  }
+
+  /* Vercel / Geist */
+  [data-theme-preset="vercel"] {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 9%;
+    --card: 0 0% 100%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --ring: 0 0% 9%;
+    --radius: 0.375rem;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --font-sans: "Geist", "Inter", "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+  }
+  .dark[data-theme-preset="vercel"] {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 7%;
+    --popover: 0 0% 7%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --ring: 0 0% 98%;
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --secondary: 0 0% 14%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 64%;
+    --accent: 0 0% 14%;
+    --accent-foreground: 0 0% 98%;
+  }
+
+  /* Sunset */
+  [data-theme-preset="sunset"] {
+    --background: 32 70% 97%;
+    --foreground: 20 30% 15%;
+    --card: 0 0% 100%;
+    --primary: 20 90% 55%;
+    --primary-foreground: 40 40% 98%;
+    --ring: 20 90% 55%;
+    --radius: 1rem;
+    --border: 28 40% 88%;
+    --input: 28 40% 88%;
+    --muted: 28 40% 94%;
+  }
+  .dark[data-theme-preset="sunset"] {
+    --background: 20 25% 10%;
+    --card: 20 22% 13%;
+    --popover: 20 22% 13%;
+    --primary: 20 95% 62%;
+    --primary-foreground: 20 25% 10%;
+    --ring: 20 95% 62%;
+    --border: 20 15% 20%;
+    --input: 20 15% 20%;
+    --secondary: 20 15% 20%;
+    --muted: 20 15% 20%;
+    --accent: 20 15% 20%;
+  }
+
+  /* Forest */
+  [data-theme-preset="forest"] {
+    --background: 120 20% 97%;
+    --foreground: 150 30% 12%;
+    --card: 0 0% 100%;
+    --primary: 150 60% 32%;
+    --primary-foreground: 140 40% 98%;
+    --ring: 150 60% 32%;
+    --radius: 0.625rem;
+    --border: 140 18% 86%;
+    --input: 140 18% 86%;
+    --muted: 140 18% 93%;
+  }
+  .dark[data-theme-preset="forest"] {
+    --background: 150 20% 9%;
+    --card: 150 18% 12%;
+    --popover: 150 18% 12%;
+    --primary: 150 55% 55%;
+    --primary-foreground: 150 20% 9%;
+    --ring: 150 55% 55%;
+    --border: 150 12% 20%;
+    --input: 150 12% 20%;
+    --secondary: 150 12% 20%;
+    --muted: 150 12% 20%;
+    --accent: 150 12% 20%;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+  }
+  html, body, #root {
+    height: 100%;
+  }
+}
+
+.scrollbar-thin::-webkit-scrollbar { width: 8px; height: 8px; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: hsl(var(--muted-foreground) / 0.3); border-radius: 8px; }
+.scrollbar-thin::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground) / 0.5); }

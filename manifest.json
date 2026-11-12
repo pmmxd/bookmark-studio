@@ -1,0 +1,93 @@
+{
+  "manifest_version": 3,
+  "name": "书签工坊 - 书签整理 + 新标签页",
+  "short_name": "BookmarkStudio",
+  "version": "0.4.3",
+  "description": "书签工坊：书签整理、AI 标签、新标签页看板、本地 Ollama、图标缓存与隐私文件夹。Chrome / Edge。",
+  "default_locale": "zh_CN",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "收藏当前网页到书签工坊",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ollama-local",
+        "enabled": true,
+        "path": "rules/ollama-local.json"
+      }
+    ]
+  },
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "permissions": [
+    "bookmarks",
+    "storage",
+    "contextMenus",
+    "sidePanel",
+    "history",
+    "topSites",
+    "tabs",
+    "scripting",
+    "cookies",
+    "favicon",
+    "unlimitedStorage",
+    "declarativeNetRequestWithHostAccess"
+  ],
+  "host_permissions": [
+    "https://*/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*"
+  ],
+  "optional_host_permissions": [
+    "<all_urls>"
+  ],
+  "commands": {
+    "open-side-panel": {
+      "suggested_key": {
+        "default": "Alt+B",
+        "mac": "Command+B"
+      },
+      "description": "打开书签工坊侧边栏"
+    },
+    "open-cleaner": {
+      "suggested_key": {
+        "default": "Alt+Shift+C"
+      },
+      "description": "打开书签清理中心"
+    },
+    "toggle-float": {
+      "suggested_key": {
+        "default": "Alt+Shift+F"
+      },
+      "description": "切换网页悬浮球"
+    }
+  },
+  "minimum_chrome_version": "114"
+}
